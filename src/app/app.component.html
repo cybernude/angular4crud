@@ -1,0 +1,76 @@
+<clr-main-container>
+  <clr-header class="header-4">
+    <div class="branding">
+      <a href="#" class="nav-link">
+        <span class="clr-icon clr-clarity-logo"></span>
+        <span class="title">Angular4 CRUD</span>
+      </a>
+    </div>
+    <form class="search">
+      <label for="search_input">
+        <input id="search_input" type="text" placeholder="ค้นหาข้อมูล (ใส่ไว้เท่ห์ ๆ).....">
+      </label>
+    </form>
+    <div class="header-actions">
+    </div>
+  </clr-header>
+  <nav class="sub-nav" [clr-nav-level]="1">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">หน้าแรก</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">เกี่ยวกับกุเนี่ย</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <nav class="sidenav" [clr-nav-level]="2">
+
+      <section class="sidenav-content">
+        <clr-tree-node [clrTreeNodeExpanded]="true">
+          เมนูหลัก
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/home' routerLinkActive='active'>
+            <clr-icon shape="folder"></clr-icon>
+              คำอธิบายเบื้องต้น
+            </button>
+          </clr-tree-node>
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/staff/borrow' routerLinkActive='active'>
+              <clr-icon shape="tools"></clr-icon>
+              การแสดงผลข้อมูล
+            </button>
+          </clr-tree-node>
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/staff/requisition' routerLinkActive='active'>
+              <clr-icon shape="export"></clr-icon>
+              การเพิ่มข้อมูล
+            </button>
+          </clr-tree-node>
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/staff/issue' routerLinkActive='active'>
+              <clr-icon shape="shopping-cart"></clr-icon>
+              การแก้ไขข้อมูล
+            </button>
+          </clr-tree-node>
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/staff/counting' routerLinkActive='active'>
+              <clr-icon shape="clipboard"></clr-icon>
+              การลบข้อมูล
+            </button>
+          </clr-tree-node>
+          <clr-tree-node>
+            <button class="clr-treenode-link" routerLink='/staff/counting' routerLinkActive='active'>
+              <clr-icon shape="clipboard"></clr-icon>
+              การค้นหาแบบมีเงื่อนไข
+            </button>
+          </clr-tree-node>          
+        </clr-tree-node>
+      </section>
+    </nav>
+  </div>
+</clr-main-container>
