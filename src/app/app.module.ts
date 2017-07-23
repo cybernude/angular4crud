@@ -10,6 +10,13 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { DisplaypageComponent } from './displaypage/displaypage.component';
 
+//import service
+import { HusbandService } from './husband.service';
+
+//import environment
+import { environment } from '../environments/environment';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +32,10 @@ import { DisplaypageComponent } from './displaypage/displaypage.component';
         ClarityModule.forRoot(),
         ROUTING
     ],
-    providers: [],
+    providers: [
+        { provide: 'API_URL', useValue: environment.apiUrl },
+        HusbandService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

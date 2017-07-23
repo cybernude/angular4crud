@@ -1,3 +1,127 @@
-<p>
-  displaypage works!
-</p>
+<h4>การแสดงผลข้อมูล แบบใช้ Table</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="left">ชื่อ</th>
+      <th class="left">สกุล</th>
+      <th class="left">เงินเดือน</th>
+      <th class="left">ตำแหน่ง</th>
+      <th class="left">สถานที่ทำงาน</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let h of allhusband">
+      <td class="left"> {{ h.fname }} </td>
+      <td class="left"> {{ h.lname }} </td>
+      <td class="rigth"> {{ h.salary | number : '1.2-2' }} </td>
+      <td class="left"> {{ h.position }} </td>
+      <td class="left"> {{ h.office }} </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>การแสดงผลข้อมูล แบบใช้ Grid</h4>
+
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'fname'">ชื่อ</clr-dg-column>
+  <clr-dg-column [clrDgField]="'lname'">สกุล</clr-dg-column>
+  <clr-dg-column>เงินเดือน</clr-dg-column>
+  <clr-dg-column>ตำแหน่ง</clr-dg-column>
+  <clr-dg-column>สถานที่ทำงาน</clr-dg-column>
+
+  <clr-dg-row *ngFor="let h of allhusband">
+    <clr-dg-cell>{{ h.fname }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.lname }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.salary | number : '1.2-2' }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.position }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.office }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <!-- การแสดงผลส่วน Pagination ส่วนท้าย  -->
+  <clr-dg-footer>
+    รายการที่ {{pagination.firstItem + 1}} ถึง รายการที่ {{pagination.lastItem + 1}} จากทั้งหมด {{pagination.totalItems + 1}}
+    หน้า
+    <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+  </clr-dg-footer>
+  <!-- สิ้นสุด Pagination  -->
+</clr-datagrid>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        ไอ้หน้านี้ มันมีที่ไป ที่มา ยังไง
+      </div>
+      <div class="card-block">
+        <div class="card-title">
+          มาเริ่มสร้าง API กันก่อนครับ
+        </div>
+        <div class="card-text">
+          <span>
+                    API ถ้าเอาง่าย ๆ แบบบ้าน ๆ แต่ไม่ถูกหลักการ ให้มอง เห็นภาพ เปรียบกับ PHP มันก็คือ ส่วน ของการติดต่อ ฐานข้อมูล
+                    ปรกติ ที่เราติดต่อกับ ฐานข้อมูล เวลาเราจะเรียกใช้ ข้อมูลที่เรา Connect ฐานมาได้ ก็จะเป็น
+                    $x = mysql_fetch_array($query) .... อะไร ก็ว่าไป มันก็จะได้ คืนมาเป็น $x[0] เป็น array ช่องของข้อมูล ถูกไหมครับ
+                    อันนี้ก็คล้าย ๆ กัน เพียงแต่ว่า มันจะคืน ข้อมูล ออกมา ในรูปแบบของ JSON Object // พยายามจะอธิบายให้เห็นภาพ จะได้ ไม่งง แต่ดูท่าทาง มันจะงง
+                    เอาไว้ ไปทำความเข้าใจ ในตอนพาทำเลยก็แล้วกัน // เอาแบบทางการ ก็ไปอ่านเอาที่นี่ แล้วกันครับ เขียนไว้ค่อนข้างดี <a href="https://www.arnondora.in.th/dev-tip-rest-api-in-php-httpful/" target="_blank">Resful API คืออะไร</a>
+                  </span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          มาเริ่มติดตั้ง Express Resful API กันก่อน
+        </div>
+        <div class="card-text">
+          <span>ผมจะพาไปทางลัด เพื่อให้ง่ายในการติดตั้ง ผมจะพาใช้ generator-express-ts เพื่อให้ มันพา generate express api แบบ typescript ขึ้นมานะครับ (อธิบายตามความเข้าใจผมเด้อ ผิดถูก ขออภัย บอกแล้ว จะพาดำน้ำ)</span>
+          <p>
+            <h2>มาเริ่มกันเลย</h2>
+            <h3>ติดตั้ง Package ที่จำเป็นด้วยคำสั่ง npm กันก่อนเลย</h3>
+            <h4>ปล. อั่นเครื่องหมาย <code class="clr-code">#</code> นั่นบ่ต้องพิมพ์เด้อ ให้ฮู้ไว้ซื่อ ๆ ว่า มันคือการพิมพ์คำสั่งอยู่บน
+              console หรือ terminal</h4>
+            <p>
+              <span>
+            <p>
+              <code class="clr-code">
+                 #npm install -g yo
+              </code>
+            </p>
+            <p>
+              <code class="clr-code">
+                #npm install -g yo typescript
+              </code>
+            </p>
+            <p>
+              <code class="clr-code">
+                #npm install -g generator-express-ts
+              </code>
+            </p>
+            <p>
+              <code class="clr-code">
+                #npm i -g typings
+              </code>
+            </p>
+            <h4>เริ่มสร้าง Project</h4>
+            <p>
+            <code class="clr-code">#yo express-ts</code>            
+            </p>
+            <p>
+              ตัว express-generator จะถามว่า ต้องการสร้าง Folder Project API ขึ้นมาไหม ? ตอบ y ครับ (ตามภาพข้างล่าง)
+              <img src="../images/2017-07-23_23-22-51.jpg">
+            </p>
+            <p>
+              ระบบจะถามว่าต้องการจะสร้าง Folder ของโปรเจค API ว่าอะไร ก็ต้องตามใจชอบเลยครับ จำให้มันได้ก็พอ และ จะโดนถามต่อว่าจะใช้ View เป็น Engine แบบไหน อันนี้ กดผ่านไปเลยก็ได้ ในภาพผมเลือก pug
+              เพราะเรายังไม่ได้จะใช้อะไรพวกนี้ ตอนนี้ enter ผ่านไปโลด (ดูภาพประกอบนะครับ)
+              <img src="../images/2017-07-23_23-28-05.jpg">
+            </p>
+            <p>
+              หากติดตั้งสำเร็จ ไม่มี Error อะไร ก็จะได้ ตามภาพประมาณนี้ครับ
+            </p>                            
+              <img src="../images/2017-07-23_23-28-39.jpg">            
+          </span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <h4>เอวัง ก็ด้วย ประการะ ฉะนี้ แล ......!!!!!!</h4>
+      </div>
+    </div>
+  </div>
+</div>
