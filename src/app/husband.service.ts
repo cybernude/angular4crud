@@ -12,8 +12,8 @@ export class HusbandService {
   ) { }
 
   getAllHusband() {
-    console.log("in to get all husband service");
-    console.log(this.url);
+    // console.log("in to get all husband service");
+    // console.log(this.url);
     return new Promise((resolve, reject) => {
       this.http.get(`${this.url}/husband-api`)
         .map(res => res.json())
