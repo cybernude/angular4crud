@@ -1,10 +1,10 @@
 <h4>การแสดงผลข้อมูล แบบใช้ Table</h4>
- <label for="formFields_11">วันที่เริ่มต้น</label>
+<label for="formFields_11">วันที่เริ่มต้น</label>
 <input type="date" id="startdate" size="35" [(ngModel)]="startdate">
 <label for="formFields_11">วันที่สิ้นสุด</label>
 <input type="date" id="enddate" size="35" [(ngModel)]="enddate">
-<button class="btn btn-primary" (click)="showReportCondition()">ออกรายงาน</button> 
-<table class="table">
+<button class="btn btn-primary" (click)="showReportCondition()">ออกรายงาน</button>
+<!-- <table class="table">
   <thead>
     <tr>
       <th class="left">HN</th>
@@ -14,17 +14,37 @@
   </thead>
   <tbody>
     <tr *ngFor="let x of reportresult">
+      <span class="spinner spinner-lg">
+    Loading...</span>
       <td class="left"> {{ x.prcd }} </td>
       <td class="left"> {{ x.nameprcd }} </td>
       <td class="rigth"> {{ x.all_hn }} </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 
 
-  <label for="formFields_11">วันที่เริ่มต้น</label>
-  <input type="date" id="startdate" size="35" [(ngModel)]="startdate">
-  <label for="formFields_11">วันที่สิ้นสุด</label>
-  <input type="date" id="enddate" size="35" [(ngModel)]="enddate">
-  <button class="btn btn-primary" (click)="showReportConditionPost()">ออกรายงาน</button>
+<label for="formFields_11">วันที่เริ่มต้น</label>
+<input type="date" id="startdate" size="35" [(ngModel)]="startdate">
+<label for="formFields_11">วันที่สิ้นสุด</label>
+<input type="date" id="enddate" size="35" [(ngModel)]="enddate">
+<button class="btn btn-primary" (click)="showReportConditionPost()">ออกรายงาน</button>
+
+<clr-datagrid [clrDgLoading]="loading">
+  <clr-dg-column>รหัสหัตถการ</clr-dg-column>
+  <clr-dg-column [clrDgField]="'nameprcd'">ชื่อหัตการ</clr-dg-column>
+  <clr-dg-column>จำนวน</clr-dg-column>
+
+
+  <clr-dg-row *clrDgItems="let h of reportresult">
+    <clr-dg-cell>{{ h.prcd }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.nameprcd }}</clr-dg-cell>
+    <clr-dg-cell>{{ h.all_hn }}</clr-dg-cell>
+
+  </clr-dg-row>
+          <clr-dg-footer>
+            {{pageWait.firstItem + 1}} - {{pageWait.lastItem + 1}} of {{pageWait.totalItems}} รายการ
+            <clr-dg-pagination #pageWait [clrDgPageSize]="10"></clr-dg-pagination>
+          </clr-dg-footer>
+</clr-datagrid>

@@ -9,7 +9,7 @@ import { ProcedureService } from '../procedure.service';
   styleUrls: ['./reportwithcondition.component.scss']
 })
 export class ReportwithconditionComponent implements OnInit {
-
+  loading = false;
   reportresult: any = [];
 
   startdate: any;
@@ -43,11 +43,13 @@ export class ReportwithconditionComponent implements OnInit {
 
   showPostData() {
     this.reportresult = [];
+    this.loading = true;
     this.procedureService.getReportProcedureByPostMethod(this.startdate, this.enddate)
       .then((results: any) => {
         if (results.ok) {
           this.reportresult = results.rows;
           //check result data
+          this.loading = false;
           console.log(this.reportresult);
         } else {
           console.log(JSON.stringify(results.error));
