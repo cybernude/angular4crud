@@ -8,8 +8,8 @@
       <th class="left">ตำแหน่ง</th>
       <th class="left">สถานที่ทำงาน</th>
     </tr>
-  </thead>
-  <tbody>
+  </thead> 
+  <tbody>  
     <tr *ngFor="let h of allhusband">
       <td class="left"> {{ h.fname }} </td>
       <td class="left"> {{ h.lname }} </td>
@@ -25,7 +25,7 @@
 <clr-datagrid>
   <clr-dg-column [clrDgField]="'fname'">ชื่อ</clr-dg-column>
   <clr-dg-column [clrDgField]="'lname'">สกุล</clr-dg-column>
-  <clr-dg-column>เงินเดือน</clr-dg-column>
+  <clr-dg-column [clrDgField]="'salary'">เงินเดือน</clr-dg-column>
   <clr-dg-column>ตำแหน่ง</clr-dg-column>
   <clr-dg-column>สถานที่ทำงาน</clr-dg-column>
 

@@ -5,17 +5,17 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HusbandService {
-
+  myurl: any;
   constructor(
     @Inject('API_URL') private url: string,
     private http: Http
   ) { }
 
   getAllHusband() {
-    // console.log("in to get all husband service");
-    // console.log(this.url);
     return new Promise((resolve, reject) => {
+      // this.myurl = 'http://localhost:3001/husband-api';
       this.http.get(`${this.url}/husband-api`)
+      // this.http.get(this.myurl)
         .map(res => res.json())
         .subscribe(data => {
           console.log(data);
@@ -26,4 +26,6 @@ export class HusbandService {
         });
     });
   }
+
+
 }
